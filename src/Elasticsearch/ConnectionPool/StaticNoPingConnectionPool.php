@@ -24,6 +24,10 @@ class StaticNoPingConnectionPool extends AbstractConnectionPool implements Conne
      */
     public function __construct($connections, SelectorInterface $selector, ConnectionFactoryInterface $factory, $connectionPoolParams)
     {
+        if($connectionPoolParams['pingTimeout'])
+        {
+            $this->pingTimeout = $connectionPoolParams['pingTimeout'];
+        }
         parent::__construct($connections, $selector, $factory, $connectionPoolParams);
     }
 
